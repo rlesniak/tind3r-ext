@@ -1,6 +1,6 @@
 {
   "name": "tind3r-web",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Unofficial web client for Tinder.",
   "scripts": {
     "build": "node utils/build.js",
