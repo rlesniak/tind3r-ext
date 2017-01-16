@@ -1,0 +1,37 @@
+{
+  "name": "Tind3r.com - web client for Tinder.",
+  "description": "Unofficial Tinder client for web",
+  "background": {
+    "page": "background.html"
+  },
+  "icons": {
+    "48": "icon.png"
+  },
+  "permissions": [
+    "*://*.gotinder.com/*",
+    "webRequest",
+    "webRequestBlocking",
+    "tabs"
+  ],
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "externally_connectable": {
+    "matches": ["*://localhost/*", "*://tnder.herokuapp.com/*", "*://tind3r.com/*"]
+  },
+  "content_scripts": [
+    {
+      "include_globs": [ "*464891386855067*redirect_uri=fbconnect%3A%2F%2Fsuccess*", "*redirect_uri=fbconnect%3A%2F%2Fsuccess*464891386855067*" ],
+      "js": [ "contentScripts.bundle.js" ],
+      "matches": [
+        "https://facebook.com/v2.0/dialog/oauth*",
+        "https://www.facebook.com/v2.0/dialog/oauth*",
+        "https://web.facebook.com/v2.0/dialog/oauth*",
+        "https://www.web.facebook.com/v2.0/dialog/oauth*"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
