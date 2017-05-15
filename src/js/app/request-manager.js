@@ -33,4 +33,12 @@ export default {
   post(url, params = {}) {
     return tokenInstance().post(url, params)
   },
+
+  put(url, params = {}) {
+    return tokenInstance().put(url, params)
+  },
+
+  delete(url, params = {}) {
+    return tokenInstance().delete(url, params)
+  },
 }

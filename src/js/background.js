@@ -42,6 +42,14 @@ chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => 
       Tinder.post(request.url, request.params, sendResponse)
       return true
 
+    case 'DELETE':
+      Tinder.delete(request.url, request.params, sendResponse)
+      return true
+
+    case 'PUT':
+      Tinder.put(request.url, request.params, sendResponse)
+      return true
+
     case 'CHECK_INSTALLED':
       sendResponse(true)
       break;

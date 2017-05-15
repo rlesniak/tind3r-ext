@@ -1,6 +1,6 @@
 {
-  "name": "Tind3r.com - web client for Tinder.",
-  "description": "Unofficial Tinder client for web",
+  "name": "Web dating app.",
+  "description": "Unofficial client for web",
   "background": {
     "page": "background.html"
   },

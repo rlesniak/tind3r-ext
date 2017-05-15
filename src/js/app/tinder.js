@@ -17,6 +17,22 @@ const Tinder = {
     })
   },
 
+  delete(url, params, sendResponse) {
+    requestManager.delete(url, params).then(resp => {
+      sendResponse({ success: true, resp })
+    }).catch(resp => {
+      sendResponse({ success: false, resp })
+    })
+  },
+
+  put(url, params, sendResponse) {
+    requestManager.put(url, params).then(resp => {
+      sendResponse({ success: true, resp })
+    }).catch(resp => {
+      sendResponse({ success: false, resp })
+    })
+  },
+
   auth(fbToken) {
     return new Promise((resolve) => {
       requestManager.auth(fbToken).then(({ data }) => {
