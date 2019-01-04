@@ -1,9 +1,9 @@
 {
   "name": "tind3r-web",
-  "version": "0.2.2",
+  "version": "0.5.0",
   "description": "Unofficial client for web.",
   "scripts": {
-    "build": "node utils/build.js",
+    "build": "NODE_ENV=production node utils/build.js",
     "start": "node utils/webserver.js"
   },
   "dependencies": {

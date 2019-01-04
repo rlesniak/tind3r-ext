@@ -5,23 +5,13 @@ import requestManager from './app/request-manager'
 
 chrome.browserAction.onClicked.addListener(function(tab) {
   chrome.tabs.create({
-    url: 'http://tind3r.com'
+    url: 'https://tind3r.com'
   })
 })
 
-chrome.webRequest.onBeforeSendHeaders.addListener(details => {
-  details.requestHeaders.forEach(header => {
-    if (header.name === 'User-Agent') {
-      header.value = 'Tinder/6.3.1 (iPhone; iOS 10.0.2; Scale/2.00)'
-    }
-
-    if (header.name === 'Origin') {
-      header.value = ''
-    }
-  })
-
-  return { requestHeaders: details.requestHeaders }
-}, { urls: ['*://api.gotinder.com/*'] }, ['blocking', 'requestHeaders'])
+const setHeaders = (callback, host) => {
+  chrome.webRequest.onBeforeSendHeaders.addListener(eval(callback), { urls: [host] }, ['blocking', 'requestHeaders'])
+};
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'FACEBOOK_RCV_TOKEN') {
@@ -64,6 +54,10 @@ chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => 
 
     case 'PURGE':
       Tinder.purge()
+      break;
+
+    case 'ATTACH_HEADERS':
+      setHeaders(request.callback, request.host)
       break;
 
     case 'GET_VERSION':

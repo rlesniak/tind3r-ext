@@ -30,6 +30,11 @@
         "https://www.web.facebook.com/v2.0/dialog/oauth*"
       ],
       "run_at": "document_start"
+    },
+    {
+      "matches": ["*://localhost/*", "*://tnder.herokuapp.com/*", "*://tind3r.com/*"],
+      "js": ["tind3rContentScript.bundle.js"],
+      "run_at": "document_start"
     }
   ],
   "manifest_version": 2,

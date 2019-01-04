@@ -12,6 +12,7 @@ module.exports = {
   entry: {
     background: path.join(__dirname, 'src', 'js', 'background.js'),
     contentScripts: path.join(__dirname, 'src', 'js', 'content-scripts.js'),
+    tind3rContentScript: path.join(__dirname, 'src', 'js', 'tind3r-content-script.js'),
   },
   output: {
     path: path.join(__dirname, 'build'),
@@ -40,5 +41,5 @@ module.exports = {
     uglify,
     new WriteFilePlugin()
   ],
-  excludeEntriesToHotReload: ['contentScripts']
+  excludeEntriesToHotReload: ['contentScripts', 'accountKit']
 }
