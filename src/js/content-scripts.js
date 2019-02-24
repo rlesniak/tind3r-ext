@@ -9,9 +9,10 @@ const readyStateCheckInterval = setInterval(() => {
     jQuery('body').css('pointer-events', 'none')
 
     document.title = 'Tind3r - refresh token FB'
-    const code = document.querySelectorAll(['[name="fb_dtsg"]'])[0].value
+    const selector = document.querySelectorAll(['[name="fb_dtsg"]'])[0];
+    const code = (selector || {}).value
 
-    if (!code) {
+    if (!code || !selector) {
       alert('Please login and go back there.')
       window.close()
       return

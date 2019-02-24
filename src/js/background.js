@@ -15,6 +15,8 @@ const setHeaders = (callback, host) => {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   if (request.type === 'FACEBOOK_RCV_TOKEN') {
+    console.log(request);
+
     Tinder.auth(request.token).then(resp => {
       sendResponse()
     })
@@ -64,6 +66,19 @@ chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => 
       const version = chrome.runtime.getManifest().version
       sendResponse(version)
       break;
+
+    case 'CONFIG':
+      console.log('request', request);
+
+      requestManager.setConfig(request.configObj)
+      break;
     default:
   }
 })
+
+chrome.runtime.onInstalled.addListener(function listener(details) {
+  if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+    chrome.tabs.create({url: "https://tind3r.com/"});
+    chrome.runtime.onInstalled.removeListener(listener);
+  }
+});

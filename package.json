@@ -1,10 +1,10 @@
 {
-  "name": "tind3r-web",
-  "version": "0.5.0",
-  "description": "Unofficial client for web.",
+  "name": "love-web",
+  "version": "0.1.0",
+  "description": "Find love through internet",
   "scripts": {
     "build": "NODE_ENV=production node utils/build.js",
-    "start": "node utils/webserver.js"
+    "start": "PORT=3001 node utils/webserver.js"
   },
   "dependencies": {
     "axios": "^0.15.2",

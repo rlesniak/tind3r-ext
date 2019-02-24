@@ -1,6 +1,6 @@
 {
-  "name": "Web dating app.",
-  "description": "Unofficial client for web",
+  "name": "Love app",
+  "description": "Find love through internet",
   "background": {
     "page": "background.html"
   },
@@ -21,9 +21,10 @@
   },
   "content_scripts": [
     {
-      "include_globs": [ "*464891386855067*redirect_uri=fbconnect%3A%2F%2Fsuccess*", "*redirect_uri=fbconnect%3A%2F%2Fsuccess*464891386855067*" ],
       "js": [ "contentScripts.bundle.js" ],
       "matches": [
+        "https://www.facebook.com/login.php?skip_api_login*",
+        "https://facebook.com/login.php?skip_api_login*",
         "https://facebook.com/v2.0/dialog/oauth*",
         "https://www.facebook.com/v2.0/dialog/oauth*",
         "https://web.facebook.com/v2.0/dialog/oauth*",

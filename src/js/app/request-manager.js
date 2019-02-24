@@ -1,11 +1,8 @@
 import axios from 'axios'
 
-const config = {
-  baseURL: 'https://api.gotinder.com/',
-  timeout: 30000,
-}
+let config = {}
 
-const instance = axios.create(config)
+let instance = axios.create(config)
 
 const token = () => localStorage.getItem('tinder-token')
 
@@ -22,8 +19,16 @@ const tokenInstance = () => axios.create({
 })
 
 export default {
+  setConfig(value) {
+    config = value;
+    console.log('set', value, config);
+
+    instance = axios.create(config);
+  },
   auth(facebook_token) {
-    return instance.post('/auth', { facebook_token })
+    console.log(config);
+
+    return axios.post(config.baseURL + '/auth', { facebook_token })
   },
 
   get(url, params = {}) {
